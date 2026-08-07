@@ -2,36 +2,48 @@
    CONFIGURACIÓN — edita solo este bloque
    ============================================================ */
 const CONFIG = {
-  marca:    'Vet a Domicilio',              // Nombre de tu veterinaria
-  whatsapp: '56900000000',                  // Solo números, con código de país. Ej: 56912345678
-  telefono: '+56 9 0000 0000',              // Cómo se muestra el teléfono en pantalla
-  correo:   'contacto@tudominio.cl',
-  zonas:    'Comunas de atención a confirmar',
-  horario:  'Lunes a sábado · 9:00 a 20:00 h'
+  marca:    'Dra. Luna Fuentes',
+  bajada:   'Veterinaria a domicilio',
+  whatsapp: '56984491087',                  // solo números, con código de país
+  telefono: '+56 9 8449 1087',              // cómo se muestra en pantalla
+  correo:   'veterinariamvi@gmail.com',
+  zonas: [
+    'Santiago: Lo Barnechea, Vitacura, Las Condes y Chicureo',
+    'V Región: Viña del Mar, Concón, Reñaca y Quilpué'
+  ],
+  horario:     'Lunes a viernes · 08:00 a 20:00 h',
+  horarioNota: 'Sábado y domingo según disponibilidad, con valor de fin de semana'
 };
 
 /* ============================================================
    Aplicar configuración al contenido
    ============================================================ */
-document.querySelectorAll('[data-brand]').forEach(el => el.textContent = CONFIG.marca);
+const setText = (sel, valor) =>
+  document.querySelectorAll(sel).forEach(el => el.textContent = valor);
 
-const telLink = document.querySelector('[data-tel]');
-if (telLink) {
-  telLink.textContent = CONFIG.telefono;
-  telLink.href = 'tel:+' + CONFIG.whatsapp;
-}
+setText('[data-brand]', CONFIG.marca);
+setText('[data-bajada]', CONFIG.bajada);
+setText('[data-horario]', CONFIG.horario);
+setText('[data-horario-nota]', CONFIG.horarioNota);
 
-const mailLink = document.querySelector('[data-mail]');
-if (mailLink) {
-  mailLink.textContent = CONFIG.correo;
-  mailLink.href = 'mailto:' + CONFIG.correo;
-}
+document.querySelectorAll('[data-tel]').forEach(el => {
+  el.textContent = CONFIG.telefono;
+  el.href = 'tel:+' + CONFIG.whatsapp;
+});
 
-const zonasEl = document.querySelector('[data-zonas]');
-if (zonasEl) zonasEl.textContent = CONFIG.zonas;
+document.querySelectorAll('[data-mail]').forEach(el => {
+  el.textContent = CONFIG.correo;
+  el.href = 'mailto:' + CONFIG.correo;
+});
 
-const horarioEl = document.querySelector('[data-horario]');
-if (horarioEl) horarioEl.textContent = CONFIG.horario;
+document.querySelectorAll('[data-zonas]').forEach(el => {
+  el.innerHTML = '';
+  CONFIG.zonas.forEach(z => {
+    const li = document.createElement('li');
+    li.textContent = z;
+    el.appendChild(li);
+  });
+});
 
 const waUrl = texto =>
   'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(texto);

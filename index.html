@@ -3,8 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Veterinaria a Domicilio — Atención médica para tu mascota en casa</title>
-<meta name="description" content="Servicios veterinarios a domicilio: consulta médica, vacunación, exámenes de sangre, desparasitación, microchip y certificados de viaje nacional e internacional.">
+<title>Dra. Luna Fuentes — Veterinaria a domicilio en Santiago y V Región</title>
+<meta name="description" content="Medicina veterinaria integrativa a domicilio. Consulta médica, vacunación, exámenes de sangre, desparasitación, microchip y certificados de viaje en Santiago y Viña del Mar.">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<meta property="og:title" content="Dra. Luna Fuentes — Veterinaria a domicilio">
+<meta property="og:description" content="Atención veterinaria en tu hogar, en Santiago y la V Región. Sin traslados, sin salas de espera.">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -16,26 +20,17 @@
 <header class="header" id="header">
   <div class="container header__inner">
     <a class="logo" href="#inicio" aria-label="Inicio">
-      <span class="logo__mark" aria-hidden="true">
-        <svg viewBox="0 0 32 32" fill="none">
-          <path d="M4.5 14.2 16 5.2l11.5 9v11.3a2 2 0 0 1-2 2h-19a2 2 0 0 1-2-2V14.2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-          <circle cx="12.6" cy="17.8" r="1.25" fill="currentColor"/>
-          <circle cx="16" cy="16.9" r="1.25" fill="currentColor"/>
-          <circle cx="19.4" cy="17.8" r="1.25" fill="currentColor"/>
-          <path d="M16 20c2.1 0 3.6 1.1 3.6 2.4S18.1 24.6 16 24.6s-3.6-.9-3.6-2.2S13.9 20 16 20Z" fill="currentColor"/>
-        </svg>
-      </span>
+      <img class="logo__mark" src="assets/logo-mark.png" alt="Logo MVI, Medicina Veterinaria Integrativa">
       <span class="logo__text">
-        <!-- EDITAR: nombre de tu veterinaria -->
-        <strong data-brand>Vet a Domicilio</strong>
-        <small>Atención veterinaria en casa</small>
+        <strong data-brand>Dra. Luna Fuentes</strong>
+        <small data-bajada>Veterinaria a domicilio</small>
       </span>
     </a>
 
     <nav class="nav" id="nav">
       <a href="#servicios">Servicios</a>
       <a href="#como-funciona">Cómo funciona</a>
-      <a href="#beneficios">Por qué a domicilio</a>
+      <a href="#cobertura">Cobertura</a>
       <a href="#preguntas">Preguntas</a>
       <a class="btn btn--sm btn--primary nav__cta" href="#contacto">Agendar visita</a>
     </nav>
@@ -52,7 +47,7 @@
 <section class="hero" id="inicio">
   <div class="container hero__inner">
     <div class="hero__copy">
-      <span class="eyebrow">Servicio veterinario a domicilio</span>
+      <span class="eyebrow">Medicina veterinaria integrativa a domicilio</span>
       <h1>La salud de tu mascota,<br><span class="accent">sin salir de casa</span></h1>
       <p class="lead">
         Consultas, vacunas, exámenes y procedimientos preventivos en el lugar donde tu mascota
@@ -64,34 +59,15 @@
       </div>
       <ul class="hero__points">
         <li>Atención personalizada</li>
-        <li>Horarios flexibles</li>
+        <li>Perros y gatos</li>
         <li>Trato libre de estrés</li>
       </ul>
     </div>
 
-    <!-- Visual del hero. Para usar una foto real, reemplaza el bloque .visual__panel
-         por: <img src="tu-foto.jpg" alt="..." class="visual__photo"> -->
-    <div class="hero__visual" aria-hidden="true">
+    <div class="hero__visual">
       <div class="visual">
         <div class="visual__panel">
-          <svg viewBox="0 0 200 200" fill="none" class="visual__paw">
-            <circle cx="70" cy="78" r="17" fill="currentColor"/>
-            <circle cx="104" cy="66" r="17" fill="currentColor"/>
-            <circle cx="138" cy="80" r="16" fill="currentColor"/>
-            <circle cx="52" cy="116" r="14" fill="currentColor"/>
-            <path d="M104 100c26 0 44 15 44 31s-19 25-44 25-44-9-44-25 18-31 44-31Z" fill="currentColor"/>
-          </svg>
-        </div>
-        <div class="visual__card visual__card--a">
-          <span class="dot"></span>
-          <div>
-            <strong>Visita agendada</strong>
-            <small>Hoy · 16:30 h</small>
-          </div>
-        </div>
-        <div class="visual__card visual__card--b">
-          <strong>+ Ficha clínica</strong>
-          <small>Historial de tu mascota</small>
+          <img src="assets/logo-mvi.png" alt="MVI · Medicina Veterinaria Integrativa — Dra. Luna Fuentes T.">
         </div>
       </div>
     </div>
@@ -225,8 +201,8 @@
     <ol class="steps">
       <li class="step reveal">
         <span class="step__num">01</span>
-        <h3>Escríbenos</h3>
-        <p>Cuéntanos qué necesita tu mascota, su edad y tu comuna. Te respondemos con la disponibilidad.</p>
+        <h3>Escríbeme</h3>
+        <p>Cuéntame qué necesita tu mascota, su edad y tu comuna. Te respondo con la disponibilidad.</p>
       </li>
       <li class="step reveal">
         <span class="step__num">02</span>
@@ -236,7 +212,7 @@
       <li class="step reveal">
         <span class="step__num">03</span>
         <h3>Atención en tu hogar</h3>
-        <p>Llegamos con todo lo necesario. Al terminar recibes las indicaciones y el registro de la atención.</p>
+        <p>Llego con todo lo necesario. Al terminar recibes las indicaciones y el registro de la atención.</p>
       </li>
     </ol>
   </div>
@@ -276,8 +252,45 @@
   </div>
 </section>
 
+<!-- ============ COBERTURA ============ -->
+<section class="section section--alt" id="cobertura">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow">Cobertura</span>
+      <h2>Dónde atiendo</h2>
+      <p>Si tu comuna no aparece en la lista, escríbeme igual y confirmamos si llego hasta tu dirección.</p>
+    </div>
+
+    <div class="zonas">
+      <article class="zona reveal">
+        <h3>Santiago</h3>
+        <ul>
+          <li>Lo Barnechea</li>
+          <li>Vitacura</li>
+          <li>Las Condes</li>
+          <li>Chicureo</li>
+        </ul>
+      </article>
+      <article class="zona reveal">
+        <h3>V Región</h3>
+        <ul>
+          <li>Viña del Mar</li>
+          <li>Concón</li>
+          <li>Reñaca</li>
+          <li>Quilpué</li>
+        </ul>
+      </article>
+      <article class="zona zona--horario reveal">
+        <h3>Horario</h3>
+        <p class="zona__horario" data-horario>Lunes a viernes · 08:00 a 20:00 h</p>
+        <p class="zona__nota" data-horario-nota>Sábado y domingo según disponibilidad, con valor de fin de semana</p>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ============ PREGUNTAS ============ -->
-<section class="section section--alt" id="preguntas">
+<section class="section" id="preguntas">
   <div class="container container--narrow">
     <div class="section__head reveal">
       <span class="eyebrow">Preguntas frecuentes</span>
@@ -286,10 +299,9 @@
 
     <div class="faq">
       <details class="reveal">
-        <summary>¿En qué sectores atienden?</summary>
-        <p><!-- EDITAR: indica tus comunas o sectores de cobertura -->
-          Atendemos en las comunas indicadas en la sección de contacto. Si no estás seguro,
-          escríbenos y te confirmamos si llegamos a tu dirección.</p>
+        <summary>¿Atienden los fines de semana?</summary>
+        <p>Sí, sábado y domingo según disponibilidad. La atención de fin de semana tiene un valor
+          diferenciado que se te informa al momento de agendar.</p>
       </details>
       <details class="reveal">
         <summary>¿Qué necesito preparar para la visita?</summary>
@@ -307,9 +319,10 @@
           y requisitos varían según el destino, por lo que conviene agendar con anticipación.</p>
       </details>
       <details class="reveal">
-        <summary>¿Qué formas de pago aceptan?</summary>
-        <p><!-- EDITAR: ajusta según tus medios de pago -->
-          Efectivo y transferencia electrónica al finalizar la atención.</p>
+        <summary>¿Cuánto cuesta cada servicio?</summary>
+        <p><!-- EDITAR: agregar valores o rangos cuando los definas -->
+          El valor depende del servicio y de la comuna. Escríbeme por WhatsApp con lo que necesitas
+          y te envío el detalle antes de agendar.</p>
       </details>
     </div>
   </div>
@@ -321,32 +334,36 @@
     <div class="reveal">
       <span class="eyebrow">Contacto</span>
       <h2>Agenda la visita de tu mascota</h2>
-      <p class="lead">Escríbenos y coordinamos día y hora. Te respondemos lo antes posible.</p>
+      <p class="lead">Escríbeme y coordinamos día y hora. Te respondo lo antes posible.</p>
 
       <ul class="contact__list">
         <li>
           <span class="contact__ico" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5Z"/></svg>
           </span>
-          <div><small>Teléfono / WhatsApp</small><a data-tel href="tel:+56900000000">+56 9 0000 0000</a></div>
+          <div><small>Teléfono / WhatsApp</small><a data-tel href="tel:+56984491087">+56 9 8449 1087</a></div>
         </li>
         <li>
           <span class="contact__ico" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="14" rx="2"/><path d="M4 6.5 12 12.5 20 6.5"/></svg>
           </span>
-          <div><small>Correo</small><a data-mail href="mailto:contacto@tudominio.cl">contacto@tudominio.cl</a></div>
+          <div><small>Correo</small><a data-mail href="mailto:veterinariamvi@gmail.com">veterinariamvi@gmail.com</a></div>
         </li>
         <li>
           <span class="contact__ico" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
           </span>
-          <div><small>Cobertura</small><span data-zonas>Comunas de atención a confirmar</span></div>
+          <div><small>Cobertura</small><ul class="contact__zonas" data-zonas></ul></div>
         </li>
         <li>
           <span class="contact__ico" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
           </span>
-          <div><small>Horario</small><span data-horario>Lunes a sábado · 9:00 a 20:00 h</span></div>
+          <div>
+            <small>Horario</small>
+            <span data-horario>Lunes a viernes · 08:00 a 20:00 h</span>
+            <span class="contact__nota" data-horario-nota></span>
+          </div>
         </li>
       </ul>
     </div>
@@ -376,10 +393,20 @@
       </div>
       <div class="field">
         <label for="comuna">Comuna</label>
-        <input id="comuna" name="comuna" type="text" placeholder="Ej: Providencia">
+        <select id="comuna" name="comuna">
+          <option>Lo Barnechea</option>
+          <option>Vitacura</option>
+          <option>Las Condes</option>
+          <option>Chicureo</option>
+          <option>Viña del Mar</option>
+          <option>Concón</option>
+          <option>Reñaca</option>
+          <option>Quilpué</option>
+          <option>Otra comuna</option>
+        </select>
       </div>
       <div class="field field--full">
-        <label for="mensaje">Cuéntanos brevemente</label>
+        <label for="mensaje">Cuéntame brevemente</label>
         <textarea id="mensaje" name="mensaje" rows="4" placeholder="Edad de tu mascota, motivo de la visita, días u horarios que te acomodan…"></textarea>
       </div>
       <button class="btn btn--primary btn--block" type="submit">Enviar por WhatsApp</button>
@@ -394,27 +421,20 @@
 <footer class="footer">
   <div class="container footer__inner">
     <div class="footer__brand">
-      <span class="logo__mark logo__mark--sm" aria-hidden="true">
-        <svg viewBox="0 0 32 32" fill="none">
-          <path d="M4.5 14.2 16 5.2l11.5 9v11.3a2 2 0 0 1-2 2h-19a2 2 0 0 1-2-2V14.2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-          <circle cx="12.6" cy="17.8" r="1.25" fill="currentColor"/>
-          <circle cx="16" cy="16.9" r="1.25" fill="currentColor"/>
-          <circle cx="19.4" cy="17.8" r="1.25" fill="currentColor"/>
-          <path d="M16 20c2.1 0 3.6 1.1 3.6 2.4S18.1 24.6 16 24.6s-3.6-.9-3.6-2.2S13.9 20 16 20Z" fill="currentColor"/>
-        </svg>
-      </span>
+      <img class="logo__mark logo__mark--sm" src="assets/logo-mark.png" alt="">
       <div>
-        <strong data-brand>Vet a Domicilio</strong>
-        <span>Atención veterinaria en tu hogar</span>
+        <strong data-brand>Dra. Luna Fuentes</strong>
+        <span>Medicina Veterinaria Integrativa</span>
       </div>
     </div>
     <nav class="footer__nav">
       <a href="#servicios">Servicios</a>
       <a href="#como-funciona">Cómo funciona</a>
+      <a href="#cobertura">Cobertura</a>
       <a href="#preguntas">Preguntas</a>
       <a href="#contacto">Contacto</a>
     </nav>
-    <p class="footer__legal">© <span id="year">2026</span> <span data-brand>Vet a Domicilio</span>. Todos los derechos reservados.</p>
+    <p class="footer__legal">© <span id="year">2026</span> <span data-brand>Dra. Luna Fuentes</span> · Medicina Veterinaria Integrativa. Todos los derechos reservados.</p>
   </div>
 </footer>
 

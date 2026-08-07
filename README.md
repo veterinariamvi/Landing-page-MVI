@@ -1,79 +1,84 @@
-# Landing page — Veterinaria a domicilio
+# Landing page — Dra. Luna Fuentes · MVI
 
-Sitio estático, sin dependencias. Para verlo: haz doble clic en `index.html`.
+Sitio estático, sin dependencias ni backend. Para verlo localmente: doble clic en `index.html`.
+
+Publicado en Vercel desde este repositorio: cada cambio en `main` se republica solo.
 
 ## Archivos
 
 | Archivo | Qué contiene |
 |---|---|
 | `index.html` | Todo el contenido y los textos |
-| `styles.css` | Diseño y colores |
+| `styles.css` | Diseño y paleta de la marca |
 | `script.js` | Datos de contacto, menú móvil y formulario |
+| `assets/` | Logo MVI en versión web |
 
-## 1. Lo primero que debes cambiar
+## Datos de contacto
 
-Abre `script.js` y edita el bloque `CONFIG` de arriba:
+Se editan en **un solo lugar**: el bloque `CONFIG` al inicio de `script.js`.
 
 ```js
 const CONFIG = {
-  marca:    'Vet a Domicilio',      // nombre de tu veterinaria
-  whatsapp: '56900000000',          // solo números, con código de país
-  telefono: '+56 9 0000 0000',      // cómo se ve en pantalla
-  correo:   'contacto@tudominio.cl',
-  zonas:    'Comunas de atención a confirmar',
-  horario:  'Lunes a sábado · 9:00 a 20:00 h'
+  marca:    'Dra. Luna Fuentes',
+  bajada:   'Veterinaria a domicilio',
+  whatsapp: '56984491087',            // solo números, con código de país
+  telefono: '+56 9 8449 1087',        // cómo se ve en pantalla
+  correo:   'veterinariamvi@gmail.com',
+  zonas: [
+    'Santiago: Lo Barnechea, Vitacura, Las Condes y Chicureo',
+    'V Región: Viña del Mar, Concón, Reñaca y Quilpué'
+  ],
+  horario:     'Lunes a viernes · 08:00 a 20:00 h',
+  horarioNota: 'Sábado y domingo según disponibilidad, con valor de fin de semana'
 };
 ```
 
-Eso actualiza automáticamente el nombre en el header y el footer, los datos de
-contacto, el botón flotante de WhatsApp y el formulario.
+Eso actualiza el nombre en el header y el footer, la sección de contacto, el
+botón flotante de WhatsApp y el mensaje que arma el formulario.
 
-> El formulario no necesita servidor: arma el mensaje con los datos que escribe
-> el cliente y abre WhatsApp con el texto listo para enviar.
+> El formulario no necesita servidor: toma los datos del cliente y abre WhatsApp
+> con el mensaje listo para enviar.
 
-## 2. Textos
+La lista de comunas del **formulario** y de la sección **Cobertura** está en
+`index.html` (busca `id="comuna"` y `id="cobertura"`); si agregas una comuna,
+actualízala en los tres lugares.
 
-Están todos en `index.html`. Busca los comentarios `<!-- EDITAR -->` para los
-puntos que dependen de tu información (comunas de cobertura, medios de pago).
+## Paleta
 
-## 3. Colores
+Tomada de tus archivos de marca, definida en `:root` dentro de `styles.css`:
 
-En `styles.css`, arriba del todo, en `:root`. El acento celeste es
-`--celeste-600: #2f7f9e` (versión oscura, para texto y botones) y
-`--celeste-400: #79bcd9` (versión clara, para fondos y detalles).
-Cambia esos dos valores por los de tu logo y el sitio completo se ajusta solo.
+| Uso | HEX | Origen |
+|---|---|---|
+| Turquesa de marca | `#45c9d0` | color oficial del logo |
+| Turquesa oscuro (texto y botones) | `#1d7a80` | derivado, para cumplir contraste AA |
+| Gris claro | `#bbbbbb` | gris oficial del logo |
+| Gris texto | `#636363` | gris oficial de las letras del logo |
 
-## 4. Logo
+El turquesa original sobre blanco da un contraste de ~2:1, insuficiente para
+texto legible, por eso los botones y enlaces usan la variante oscura del mismo
+tono. Los fondos y detalles sí usan el turquesa original.
 
-El logo actual es un SVG (casita + huella) dentro de `index.html`, en el header
-y en el footer. Para usar tu logo real, reemplaza el `<svg>...</svg>` de
-`.logo__mark` por:
+## Logo
 
-```html
-<img src="logo.png" alt="Nombre de tu veterinaria">
+Generado desde `MVI_COLOR 1.png` de tu carpeta de marca:
+
+- `assets/logo-mark.png` — solo el isotipo (manos con perro y gato), para el header
+- `assets/logo-mvi.png` — logo completo, para la portada
+- `assets/favicon.png` — ícono de la pestaña del navegador
+
+## Publicar cambios
+
+```bash
+git add -A && git commit -m "descripción del cambio" && git push
 ```
 
-## 5. Foto en el hero
+Vercel detecta el push y republica en 30–60 segundos.
 
-El recuadro celeste de la portada es un marcador de posición. Para poner una
-foto real, en `index.html` reemplaza todo el bloque `<div class="visual__panel">…</div>`
-por:
+## Pendiente
 
-```html
-<img src="tu-foto.jpg" alt="Veterinaria atendiendo a un perro en casa" class="visual__photo">
-```
-
-## 6. Publicar
-
-Sube las tres carpetas/archivos (`index.html`, `styles.css`, `script.js`) a
-cualquier hosting estático: Netlify, Vercel, GitHub Pages o el hosting de tu
-dominio. No requiere base de datos ni backend.
-
-## Pendiente cuando envíes más información
-
-- Nombre real, logo y colores exactos de la marca
-- Comunas de cobertura
-- Precios o rango de valores por servicio
-- Fotos reales
+- Fotos reales de atenciones (reemplazar el panel del logo en la portada)
+- Precios o rangos de valores por servicio
 - Redes sociales
 - Testimonios de clientes
+- Dominio propio
+- Área de acceso para clientes conectada a la app MVI
