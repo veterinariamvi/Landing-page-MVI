@@ -8,7 +8,7 @@ const CONFIG = {
   telefono: '+56 9 8449 1087',              // cómo se muestra en pantalla
   correo:   'veterinariamvi@gmail.com',
   zonas: [
-    'Santiago: Lo Barnechea, Vitacura, Las Condes y Chicureo',
+    'Santiago: Lo Barnechea, Vitacura y Las Condes',
     'V Región: Viña del Mar, Concón, Reñaca y Quilpué'
   ],
   horario:     'Lunes a viernes · 08:00 a 20:00 h',
