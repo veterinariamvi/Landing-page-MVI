@@ -12,7 +12,14 @@ const CONFIG = {
     'V Región: Viña del Mar, Concón, Reñaca y Quilpué'
   ],
   horario:     'Lunes a viernes · 08:00 a 20:00 h',
-  horarioNota: 'Sábado y domingo según disponibilidad, con valor de fin de semana'
+  horarioNota: 'Sábado y domingo según disponibilidad, con valor de fin de semana',
+
+  // Reseñas de Google. Actualiza el número cuando consigas más: es el único
+  // dato de esta sección que envejece.
+  google: {
+    opiniones: 14,
+    ficha: 'https://www.google.com/maps?cid=13481371529160765209'
+  }
 };
 
 /* ============================================================
@@ -34,6 +41,12 @@ document.querySelectorAll('[data-tel]').forEach(el => {
 document.querySelectorAll('[data-mail]').forEach(el => {
   el.textContent = CONFIG.correo;
   el.href = 'mailto:' + CONFIG.correo;
+});
+
+setText('[data-opiniones]', CONFIG.google.opiniones);
+
+document.querySelectorAll('[data-ficha]').forEach(el => {
+  el.href = CONFIG.google.ficha;
 });
 
 document.querySelectorAll('[data-zonas]').forEach(el => {

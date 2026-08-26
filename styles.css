@@ -219,6 +219,36 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 }
 .card--cta p{ margin-bottom:16px; }
 
+/* ---------- Opiniones ---------- */
+.rating{
+  display:flex; align-items:center; flex-wrap:wrap; gap:14px 20px;
+  margin-bottom:32px; padding:20px 24px;
+  background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
+}
+.rating__nota{
+  font-size:2.4rem; line-height:1; font-weight:700; color:var(--marca-700);
+  font-variant-numeric:tabular-nums;
+}
+.rating__estrellas{ display:block; color:#f0a91b; letter-spacing:.14em; font-size:1.02rem; }
+.rating__detalle{ display:block; font-size:.9rem; color:var(--gray-700); margin-top:3px; }
+.rating__link{
+  margin-left:auto; font-size:.92rem; font-weight:500; color:var(--marca-700);
+  text-decoration:underline; text-underline-offset:3px;
+}
+.rating__link:hover{ color:var(--marca-800); }
+
+.grid--opiniones{ grid-template-columns:repeat(3,1fr); align-items:start; }
+.opinion{
+  margin:0; padding:26px 24px;
+  background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
+}
+.opinion blockquote{
+  margin:0 0 16px; font-size:.95rem; line-height:1.62; color:var(--gray-700);
+}
+.opinion blockquote::before{ content:"\201C"; }
+.opinion blockquote::after{ content:"\201D"; }
+.opinion figcaption{ font-size:.9rem; font-weight:600; color:var(--ink); }
+
 /* ---------- Steps ---------- */
 .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
 .step{
@@ -359,6 +389,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 /* ---------- Responsive ---------- */
 @media (max-width:1024px){
   .grid--services{ grid-template-columns:repeat(2,1fr); }
+  .grid--opiniones{ grid-template-columns:1fr; }
   .hero__inner{ gap:44px; }
   .split{ gap:44px; }
 }
@@ -407,6 +438,9 @@ ul,ol{ margin:0; padding:0; list-style:none; }
      apiladas: casi tres pantallas de scroll para 141 palabras. En dos columnas
      son cuatro filas, y la sección se lee de una mirada. */
   .grid--services{ grid-template-columns:repeat(2,1fr); gap:12px; }
+  .rating{ padding:18px 20px; gap:12px 16px; }
+  .rating__link{ margin-left:0; width:100%; }
+  .opinion{ padding:20px 18px; }
   .grid--services .card{ padding:20px 16px; }
   .grid--services .card__icon{ width:38px; height:38px; margin-bottom:12px; border-radius:11px; }
   .grid--services .card__icon svg{ width:19px; height:19px; }
