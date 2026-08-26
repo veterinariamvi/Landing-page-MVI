@@ -174,6 +174,17 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 }
 .visual__panel img{ width:100%; height:100%; object-fit:contain; }
 
+/* Variante con fotografía: la imagen ocupa el marco completo, sin el aire que
+   necesitaba el logo. Vertical porque las fotos son de teléfono y así se
+   aprovecha el alto de la columna en vez de recortarle media cara. */
+.visual__panel--foto{
+  aspect-ratio:4/5;
+  padding:0;
+  overflow:hidden;
+  background:var(--marca-100);
+}
+.visual__panel--foto img{ object-fit:cover; object-position:center 30%; }
+
 /* ---------- Strip ---------- */
 .strip{ border-block:1px solid var(--line); background:var(--white); }
 .strip__inner{ display:grid; grid-template-columns:repeat(4,1fr); }
