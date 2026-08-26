@@ -392,9 +392,31 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 
 @media (max-width:560px){
   .container{ padding-inline:20px; }
-  .grid--services{ grid-template-columns:1fr; }
   .form{ grid-template-columns:1fr; padding:24px; }
   .hero__actions .btn{ flex:1 1 100%; }
+
+  /* En el teléfono el problema no es cuánta letra hay, es cuánto alto ocupa
+     cada palabra. Los servicios en una sola columna eran ocho tarjetas
+     apiladas: casi tres pantallas de scroll para 141 palabras. En dos columnas
+     son cuatro filas, y la sección se lee de una mirada. */
+  .grid--services{ grid-template-columns:repeat(2,1fr); gap:12px; }
+  .grid--services .card{ padding:20px 16px; }
+  .grid--services .card__icon{ width:38px; height:38px; margin-bottom:12px; border-radius:11px; }
+  .grid--services .card__icon svg{ width:19px; height:19px; }
+  .grid--services .card h3{ font-size:.97rem; margin-bottom:5px; }
+  .grid--services .card p{ font-size:.85rem; line-height:1.45; }
+  /* La tarjeta de llamado a la acción sí necesita el ancho completo */
+  .grid--services .card--cta{ grid-column:1 / -1; padding:24px 20px; }
+
+  /* La foto del hero, más ancha y más baja: ocupaba media pantalla antes de
+     que apareciera el título. */
+  .visual{ max-width:none; }
+  .visual__panel--foto{ aspect-ratio:5/4; }
+
+  /* Menos aire entre secciones: con seis secciones, cada 20 px de más son
+     media pantalla de scroll acumulada. */
+  .section{ padding:56px 0; }
+  .section__head{ margin-bottom:32px; }
   .footer__inner{ flex-direction:column; align-items:flex-start; }
   .logo__mark{ height:38px; }
   .logo__text small{ display:none; }
