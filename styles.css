@@ -183,7 +183,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   overflow:hidden;
   background:var(--marca-100);
 }
-.visual__panel--foto img{ object-fit:cover; object-position:center 30%; }
+.visual__panel--foto img{ object-fit:cover; object-position:center 22%; }
 
 /* ---------- Strip ---------- */
 .strip{ border-block:1px solid var(--line); background:var(--white); }
