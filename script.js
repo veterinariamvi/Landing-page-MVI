@@ -67,7 +67,11 @@ const waUrl = texto =>
    para llegar al mismo lugar. */
 const MENSAJES = {
   agendar:  'Hola ' + CONFIG.marca + ', quiero agendar una visita a domicilio para mi mascota.',
-  consulta: 'Hola ' + CONFIG.marca + ', quiero consultar por un servicio que no aparece en la página.'
+  consulta: 'Hola ' + CONFIG.marca + ', quiero consultar por un servicio que no aparece en la página.',
+
+  /* A propósito no dice la palabra: quien escribe desde ahí no tiene por qué
+     tener que escribirla antes de enviar. */
+  despedida: 'Hola ' + CONFIG.marca + ', quisiera conversar sobre mi mascota.'
 };
 
 /* El href="#contacto" del HTML queda como respaldo: si el JavaScript no carga,
