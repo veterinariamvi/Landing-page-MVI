@@ -302,6 +302,8 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 .contact__zonas{ display:grid; gap:3px; }
 .contact__zonas li{ display:block; font-size:.94rem; line-height:1.5; }
 .contact__nota{ display:block; font-size:.85rem; color:var(--muted); line-height:1.5; }
+.contact__ref{ margin-top:-18px; margin-bottom:26px; font-size:.9rem; color:var(--muted); }
+.contact__ref a{ color:var(--marca-700); text-decoration:underline; text-underline-offset:2px; }
 
 /* ---------- Formulario ---------- */
 .form{
@@ -392,7 +394,12 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 
 @media (max-width:560px){
   .container{ padding-inline:20px; }
-  .form{ grid-template-columns:1fr; padding:24px; }
+  /* El formulario en una columna, salvo los dos desplegables: son cortos y
+     puestos lado a lado ahorran una fila entera. */
+  .form{ grid-template-columns:repeat(2,1fr); padding:22px; gap:14px; }
+  .field{ grid-column:1 / -1; }
+  .field--medio{ grid-column:span 1; }
+  .field textarea{ min-height:76px; }
   .hero__actions .btn{ flex:1 1 100%; }
 
   /* En el teléfono el problema no es cuánta letra hay, es cuánto alto ocupa
