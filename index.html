@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=2">
 </head>
 <body>
 
@@ -33,7 +33,7 @@
       <a href="#opiniones">Opiniones</a>
       <a href="#cobertura">Cobertura</a>
       <a href="#preguntas">Preguntas</a>
-      <a class="btn btn--sm btn--primary nav__cta" href="#contacto">Agendar visita</a>
+      <a class="btn btn--sm btn--primary nav__cta" data-wa-cta href="#contacto">Agendar visita</a>
     </nav>
 
     <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
@@ -55,7 +55,7 @@
         se siente segura. Sin traslados, sin salas de espera, sin estrés.
       </p>
       <div class="hero__actions">
-        <a class="btn btn--primary" href="#contacto">Agendar una visita</a>
+        <a class="btn btn--primary" data-wa-cta href="#contacto">Agendar una visita</a>
         <a class="btn btn--ghost" href="#servicios">Ver servicios</a>
       </div>
       <ul class="hero__points">
@@ -109,7 +109,7 @@
           </svg>
         </span>
         <h3>Vacunación</h3>
-        <p>Cachorros y adultos, con el registro en su carnet.</p>
+        <p>Séxtuple, Antirrábica, Triple Felina, KC, Leucemia y más.</p>
       </article>
 
       <article class="card reveal">
@@ -173,7 +173,7 @@
       <article class="card card--cta reveal">
         <h3>¿Necesitas otro servicio?</h3>
         <p>Cuéntame qué necesitas y te confirmo disponibilidad y valor.</p>
-        <a class="link-arrow" href="#contacto">Consultar
+        <a class="link-arrow" data-wa-cta="consulta" href="#contacto">Consultar
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </a>
       </article>
@@ -221,7 +221,7 @@
         El traslado y la sala de espera son de las mayores fuentes de ansiedad en perros y gatos.
         En casa la evaluación es más real y el rato, mucho más amable.
       </p>
-      <a class="btn btn--primary" href="#contacto">Agendar una visita</a>
+      <a class="btn btn--primary" data-wa-cta href="#contacto">Agendar una visita</a>
     </div>
 
     <ul class="benefits">
@@ -458,6 +458,6 @@
   </svg>
 </a>
 
-<script src="script.js"></script>
+<script src="script.js?v=2"></script>
 </body>
 </html>

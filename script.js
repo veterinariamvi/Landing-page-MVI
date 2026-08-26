@@ -61,9 +61,27 @@ document.querySelectorAll('[data-zonas]').forEach(el => {
 const waUrl = texto =>
   'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(texto);
 
+/* Mensajes con que se abre WhatsApp. El formulario de más abajo sigue estando
+   para quien prefiera llenarlo, pero los botones de "Agendar" abren WhatsApp
+   directo: el formulario terminaba en WhatsApp igual, así que eran tres pasos
+   para llegar al mismo lugar. */
+const MENSAJES = {
+  agendar:  'Hola ' + CONFIG.marca + ', quiero agendar una visita a domicilio para mi mascota.',
+  consulta: 'Hola ' + CONFIG.marca + ', quiero consultar por un servicio que no aparece en la página.'
+};
+
+/* El href="#contacto" del HTML queda como respaldo: si el JavaScript no carga,
+   el botón igual lleva al formulario en vez de no hacer nada. */
+document.querySelectorAll('[data-wa-cta]').forEach(el => {
+  const clave = el.getAttribute('data-wa-cta') || 'agendar';
+  el.href = waUrl(MENSAJES[clave] || MENSAJES.agendar);
+  el.target = '_blank';
+  el.rel = 'noopener';
+});
+
 const waFab = document.querySelector('[data-wa]');
 if (waFab) {
-  waFab.href = waUrl('Hola ' + CONFIG.marca + ', quiero agendar una visita a domicilio para mi mascota.');
+  waFab.href = waUrl(MENSAJES.agendar);
   waFab.target = '_blank';
   waFab.rel = 'noopener';
 }
