@@ -410,7 +410,9 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   .section{ padding:72px 0; }
   .hero{ padding:64px 0 76px; }
   .hero__inner{ grid-template-columns:1fr; }
-  .hero__visual{ order:-1; }
+  /* La foto va DESPUÉS del texto. Antes iba primero (order:-1) y en un teléfono
+     eso dejaba la promesa mil píxeles abajo: la primera pantalla era solo la
+     foto, y la mayoría de las visitas de Google llegan desde el celular. */
   .visual{ max-width:290px; }
   .split,.split--contact{ grid-template-columns:1fr; gap:40px; }
   .steps,.zonas{ grid-template-columns:1fr; }
