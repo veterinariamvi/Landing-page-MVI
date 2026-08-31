@@ -228,6 +228,10 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   border-radius:var(--radius);
   max-width:720px;
 }
+/* La tarjeta de "otro servicio" ya no vive en la grilla: va suelta,
+   debajo de la despedida, con el mismo ancho para que queden alineadas. */
+.card--suelta{ margin-top:20px; max-width:720px; }
+
 .despedida h3{ font-size:1.15rem; margin-bottom:12px; }
 .despedida p{ font-size:1rem; line-height:1.7; color:var(--gray-700); margin-bottom:18px; max-width:60ch; }
 
