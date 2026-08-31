@@ -90,6 +90,25 @@ if (waFab) {
   waFab.rel = 'noopener';
 }
 
+/* ============================================================
+   Conversión de Google Ads
+   ============================================================
+   Se marca cuando alguien se va a WhatsApp, por cualquiera de los dos
+   caminos que tiene la página: los botones (que son enlaces a wa.me) y
+   el formulario (que abre WhatsApp con window.open, sin ser un enlace).
+   Si la etiqueta no cargó, por un bloqueador o lo que sea, no pasa nada:
+   la página sigue funcionando igual. */
+const CONVERSION_WHATSAPP = 'AW-10880362465/YoVLCNeN9uocEOHPlMQo';
+
+function marcarConversion() {
+  if (typeof gtag !== 'function') return;
+  gtag('event', 'conversion', { send_to: CONVERSION_WHATSAPP });
+}
+
+document.addEventListener('click', (e) => {
+  if (e.target.closest('a[href*="wa.me"]')) marcarConversion();
+});
+
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
@@ -166,6 +185,7 @@ form.addEventListener('submit', (e) => {
     dato('mensaje') ? 'Detalle: ' + dato('mensaje') : ''
   ].filter(Boolean);
 
+  marcarConversion();
   window.open(waUrl(lineas.join('\n')), '_blank', 'noopener');
 });
 
