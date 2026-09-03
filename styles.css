@@ -331,6 +331,33 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 /* ---------- Contacto ---------- */
 .contact{ background:linear-gradient(180deg, var(--white), var(--marca-50)); border-top:1px solid var(--line); }
 .split--contact{ align-items:start; gap:56px; }
+
+/* ---------- Conóceme ---------- */
+/* Los párrafos seguidos necesitan aire: el .lead ya trae su margen, los
+   demás no tenían ninguno y quedaban pegados. */
+.split__copy p + p{ margin-top:18px; }
+
+.conoceme__foto img{
+  width:100%; height:auto; display:block;
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow);
+}
+
+/* Los enlaces a redes van acá y en el pie, nunca en el encabezado: arriba
+   serían una salida de la página justo antes de que la persona escriba. */
+.social{ display:flex; gap:12px; margin-top:30px; list-style:none; }
+.social a{
+  display:grid; place-items:center; width:44px; height:44px;
+  border-radius:50%; border:1px solid var(--line);
+  background:var(--white); color:var(--gray-700);
+  transition:color .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease);
+}
+.social a:hover,
+.social a:focus-visible{
+  color:var(--marca-700); border-color:var(--marca-300); transform:translateY(-2px);
+}
+.social svg{ width:20px; height:20px; }
+.social--pie{ margin-top:0; }
 .contact h2{ font-size:clamp(1.7rem,3vw,2.3rem); margin-bottom:16px; }
 .contact .lead{ margin-bottom:34px; }
 
