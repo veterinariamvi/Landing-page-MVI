@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Actualiza los datos de tu mascota · Dra. Luna Fuentes</title>
+<meta name="description" content="Deja al día la ficha de tu mascota para que la Dra. Luna Fuentes pueda avisarte cuando le toquen sus vacunas.">
+<!-- Es una página privada entre Luna y sus tutores: no tiene por qué salir en Google. -->
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --marca-400:#45c9d0; --marca-700:#1d7a80; --marca-800:#166268;
+    --marca-50:#f2fbfc; --marca-100:#e0f6f7;
+    --gray-200:#e6e9e9; --gray-400:#bbbbbb; --gray-700:#636363;
+    --ink:#414141; --muted:#767676; --danger:#c0392b;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--marca-50); color:var(--ink);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    font-size:16px; line-height:1.55;
+    padding:24px 18px 64px;
+  }
+  .hoja{max-width:470px;margin:0 auto}
+
+  .marca{display:flex;align-items:center;gap:11px;margin-bottom:22px}
+  .marca img{width:46px;height:46px;object-fit:contain}
+  .marca b{display:block;font-size:15px;font-weight:700;letter-spacing:-.2px}
+  .marca span{font-size:12.5px;color:var(--muted)}
+
+  h1{font-size:23px;line-height:1.25;font-weight:700;letter-spacing:-.5px;margin:0 0 10px}
+  .bajada{margin:0 0 24px;color:var(--gray-700);font-size:15px}
+
+  .campo{margin-bottom:17px}
+  label{display:block;font-size:13.5px;font-weight:600;margin-bottom:6px}
+  .ayuda{display:block;font-weight:400;font-size:12.5px;color:var(--muted);margin-top:2px}
+  input,select{
+    width:100%; padding:13px 14px; font:inherit; font-size:16px;
+    border:1.5px solid var(--gray-200); border-radius:12px; background:#fff;
+    color:var(--ink); -webkit-appearance:none; appearance:none;
+  }
+  select{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9'><path d='M1 1l6 6 6-6' fill='none' stroke='%23767676' stroke-width='2'/></svg>");
+    background-repeat:no-repeat;background-position:right 15px center}
+  input:focus,select:focus{outline:none;border-color:var(--marca-400);
+    box-shadow:0 0 0 3px var(--marca-100)}
+  /* Trampa para robots: una persona nunca la ve, un programa la llena. */
+  .trampa{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+  button{
+    width:100%; margin-top:8px; padding:15px; border:none; border-radius:12px;
+    background:var(--marca-700); color:#fff; font:inherit; font-size:16px;
+    font-weight:700; cursor:pointer;
+  }
+  button:hover{background:var(--marca-800)}
+  button:disabled{background:var(--gray-400);cursor:default}
+
+  .aviso{margin-top:16px;font-size:12.5px;color:var(--muted);line-height:1.5}
+  .error{margin-top:14px;padding:12px 14px;border-radius:11px;
+    background:#fdeceb;color:var(--danger);font-size:13.5px}
+
+  .listo{text-align:center;padding:40px 20px}
+  .listo .tic{font-size:44px;line-height:1;margin-bottom:14px}
+  .listo h2{font-size:21px;font-weight:700;margin:0 0 8px;letter-spacing:-.3px}
+  .listo p{margin:0;color:var(--gray-700);font-size:15px}
+  .listo a{display:inline-block;margin-top:22px;color:var(--marca-700);
+    font-weight:700;font-size:14.5px;text-decoration:none}
+
+  [hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main class="hoja">
+
+  <div class="marca">
+    <img src="assets/logo-mark.png" alt="">
+    <div>
+      <b>Dra. Luna Fuentes</b>
+      <span>Veterinaria a domicilio</span>
+    </div>
+  </div>
+
+  <form id="formulario">
+    <h1>Deja al día la ficha de tu mascota</h1>
+    <p class="bajada">
+      Son seis datos y toma menos de un minuto. Con esto puedo avisarte cuando
+      le toquen sus vacunas y llegar bien a tu casa sin andar preguntando la
+      dirección.
+    </p>
+
+    <div class="campo">
+      <label for="tutor">Tu nombre y apellido</label>
+      <input id="tutor" name="tutor" type="text" autocomplete="name" required>
+    </div>
+
+    <div class="campo">
+      <label for="mascota">Nombre de tu mascota
+        <span class="ayuda">Si son varias, escríbelas todas</span>
+      </label>
+      <input id="mascota" name="mascota" type="text" required>
+    </div>
+
+    <div class="campo">
+      <label for="direccion">Dirección
+        <span class="ayuda">Calle, número, casa o departamento</span>
+      </label>
+      <input id="direccion" name="direccion" type="text" autocomplete="street-address" required>
+    </div>
+
+    <div class="campo">
+      <label for="comuna">Comuna</label>
+      <select id="comuna" name="comuna" required>
+        <option value="">Elige una…</option>
+        <option>Lo Barnechea</option>
+        <option>Vitacura</option>
+        <option>Las Condes</option>
+        <option>Colina</option>
+        <option>Chicureo</option>
+        <option>Viña del Mar</option>
+        <option>Reñaca</option>
+        <option>Concón</option>
+        <option>Quilpué</option>
+        <option>Otra</option>
+      </select>
+    </div>
+
+    <div class="campo">
+      <label for="edad">Edad de tu mascota
+        <span class="ayuda">En años, aunque sea aproximada</span>
+      </label>
+      <input id="edad" name="edad" type="text" inputmode="numeric">
+    </div>
+
+    <div class="campo">
+      <label for="email">Tu correo
+        <span class="ayuda">Para mandarte el certificado de vacunas y avisos. No lo comparto con nadie.</span>
+      </label>
+      <input id="email" name="email" type="email" autocomplete="email">
+    </div>
+
+    <div class="trampa" aria-hidden="true">
+      <label for="sitio">No llenar</label>
+      <input id="sitio" name="sitio" type="text" tabindex="-1" autocomplete="off">
+    </div>
+
+    <button id="enviar" type="submit">Enviar</button>
+    <div id="error" class="error" hidden></div>
+
+    <p class="aviso">
+      Estos datos van directo a la ficha de tu mascota y los uso solo para
+      atenderla. No se comparten con nadie ni se usan para publicidad.
+    </p>
+  </form>
+
+  <div id="listo" class="listo" hidden>
+    <div class="tic">🐾</div>
+    <h2>¡Listo, gracias!</h2>
+    <p>Ya quedó anotado. Si necesito algo más, te escribo por WhatsApp.</p>
+    <a href="https://wa.me/56984491087">Escribirle a la Dra. Luna</a>
+  </div>
+
+</main>
+
+<script>
+/* ============================================================
+   Las respuestas se guardan directo en Supabase.
+
+   La clave que va acá es la pública —la misma que ya viaja en la app— y no
+   abre nada por sí sola: la regla de la tabla deja INSERTAR a cualquiera y
+   LEER solo a Luna con su sesión. Alguien que abra esta página puede dejar su
+   respuesta, pero no puede ver ni una de las demás.
+
+   Nada de lo que entra acá toca una ficha: queda en una bandeja aparte que
+   Luna revisa y aprueba en la app.
+   ============================================================ */
+const SUPABASE_URL  = 'https://sdumheqocbicaikmtyou.supabase.co';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNkdW1oZXFvY2JpY2Fpa210eW91Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE1NTYzMDIsImV4cCI6MjA5NzEzMjMwMn0.RU98uCt9EzqHrAarcm_jIf1-Fo9eFMq_3G96cqZ7JAs';
+
+const form   = document.getElementById('formulario');
+const boton  = document.getElementById('enviar');
+const aviso  = document.getElementById('error');
+const listo  = document.getElementById('listo');
+
+const limpiar = (v) => String(v || '').replace(/\s+/g, ' ').trim();
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  aviso.hidden = true;
+
+  // Si la trampa viene llena, no fue una persona. Se le dice que sí y no se
+  // guarda nada: un robot que recibe un error vuelve a intentarlo.
+  if (limpiar(form.sitio.value)) {
+    form.hidden = true; listo.hidden = false;
+    return;
+  }
+
+  boton.disabled = true;
+  boton.textContent = 'Enviando…';
+
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/formulario_respuestas`, {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_ANON,
+        'Authorization': `Bearer ${SUPABASE_ANON}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal',
+      },
+      body: JSON.stringify({
+        tutor:      limpiar(form.tutor.value),
+        mascota:    limpiar(form.mascota.value),
+        direccion:  limpiar(form.direccion.value),
+        comuna:     limpiar(form.comuna.value),
+        edad_anios: limpiar(form.edad.value),
+        email:      limpiar(form.email.value) || null,
+      }),
+    });
+    if (!res.ok) throw new Error(`El servidor respondió ${res.status}`);
+    form.hidden = true;
+    listo.hidden = false;
+    window.scrollTo(0, 0);
+  } catch (err) {
+    aviso.hidden = false;
+    aviso.textContent = 'No se pudo enviar. Revisa tu conexión y vuelve a intentarlo. '
+      + 'Si sigue fallando, escríbeme por WhatsApp y lo anoto yo.';
+    boton.disabled = false;
+    boton.textContent = 'Enviar';
+  }
+});
+</script>
+</body>
+</html>
