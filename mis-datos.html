@@ -58,6 +58,19 @@
   button:hover{background:var(--marca-800)}
   button:disabled{background:var(--gray-400);cursor:default}
 
+  .grupo{margin:26px 0 20px;padding:16px 15px 15px;background:#fff;
+    border:1.5px solid var(--gray-200);border-radius:14px}
+  .grupoTitulo{font-size:13.5px;font-weight:700;margin-bottom:13px}
+  .mascota{display:grid;grid-template-columns:1fr 92px;gap:9px;margin-bottom:11px}
+  .mascota label{font-size:12px;font-weight:600;color:var(--muted);margin-bottom:4px}
+  .mascota input{padding:11px 12px;border-radius:10px}
+  .mascota .quitar{grid-column:1/-1;justify-self:start;border:none;background:none;
+    color:var(--muted);font:inherit;font-size:12.5px;font-weight:600;
+    cursor:pointer;padding:0;margin:-4px 0 4px;width:auto}
+  .secundario{background:#fff;color:var(--marca-700);
+    border:1.5px solid var(--gray-200);font-size:14px;padding:11px;margin-top:2px}
+  .secundario:hover{background:var(--marca-50)}
+
   .aviso{margin-top:16px;font-size:12.5px;color:var(--muted);line-height:1.5}
   .error{margin-top:14px;padding:12px 14px;border-radius:11px;
     background:#fdeceb;color:var(--danger);font-size:13.5px}
@@ -86,9 +99,9 @@
   <form id="formulario">
     <h1>Deja al día la ficha de tu mascota</h1>
     <p class="bajada">
-      Son seis datos y toma menos de un minuto. Con esto puedo avisarte cuando
-      le toquen sus vacunas y llegar bien a tu casa sin andar preguntando la
-      dirección.
+      Toma menos de un minuto. Con esto puedo avisarte cuando le toquen sus
+      vacunas y llegar bien a tu casa sin andar preguntando la dirección.
+      Si tienes varias mascotas, las agregas todas acá abajo.
     </p>
 
     <div class="campo">
@@ -97,10 +110,11 @@
     </div>
 
     <div class="campo">
-      <label for="mascota">Nombre de tu mascota
-        <span class="ayuda">Si son varias, escríbelas todas</span>
+      <label for="telefono">Tu WhatsApp
+        <span class="ayuda">Para reconocer tu ficha. Es el mismo por el que hablamos.</span>
       </label>
-      <input id="mascota" name="mascota" type="text" required>
+      <input id="telefono" name="telefono" type="tel" inputmode="tel"
+        autocomplete="tel" placeholder="+56 9 1234 5678" required>
     </div>
 
     <div class="campo">
@@ -127,11 +141,10 @@
       </select>
     </div>
 
-    <div class="campo">
-      <label for="edad">Edad de tu mascota
-        <span class="ayuda">En años, aunque sea aproximada</span>
-      </label>
-      <input id="edad" name="edad" type="text" inputmode="numeric">
+    <div class="grupo">
+      <div class="grupoTitulo">Tus mascotas</div>
+      <div id="mascotas"></div>
+      <button type="button" id="agregar" class="secundario">+ Agregar otra mascota</button>
     </div>
 
     <div class="campo">
@@ -180,6 +193,36 @@ const SUPABASE_URL  = 'https://sdumheqocbicaikmtyou.supabase.co';
 const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNkdW1oZXFvY2JpY2Fpa210eW91Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE1NTYzMDIsImV4cCI6MjA5NzEzMjMwMn0.RU98uCt9EzqHrAarcm_jIf1-Fo9eFMq_3G96cqZ7JAs';
 
 const form   = document.getElementById('formulario');
+const cajaMascotas = document.getElementById('mascotas');
+
+/* Una fila por mascota, no un campo donde escribirlas todas. Luna tiene una
+   tutora con siete: si el nombre y la edad no van juntos, la edad no significa
+   nada. Cada mascota se guarda como su propia respuesta, con los mismos datos
+   del tutor, y todas comparten un "lote" para que se vean juntas al revisar. */
+const filaMascota = (primera) => {
+  const fila = document.createElement('div');
+  fila.className = 'mascota';
+  fila.innerHTML =
+    `<div>
+       <label>Nombre</label>
+       <input type="text" class="nombreMascota" ${primera ? 'required' : ''}>
+     </div>
+     <div>
+       <label>Edad</label>
+       <input type="text" class="edadMascota" inputmode="numeric" placeholder="años">
+     </div>`
+    + (primera ? '' : '<button type="button" class="quitar">Quitar</button>');
+  const quitar = fila.querySelector('.quitar');
+  if (quitar) quitar.onclick = () => fila.remove();
+  return fila;
+};
+
+cajaMascotas.appendChild(filaMascota(true));
+document.getElementById('agregar').onclick = () => {
+  cajaMascotas.appendChild(filaMascota(false));
+  cajaMascotas.lastChild.querySelector('.nombreMascota').focus();
+};
+
 const boton  = document.getElementById('enviar');
 const aviso  = document.getElementById('error');
 const listo  = document.getElementById('listo');
@@ -197,8 +240,31 @@ form.addEventListener('submit', async (e) => {
     return;
   }
 
+  const mascotas = [...cajaMascotas.querySelectorAll('.mascota')]
+    .map(f => ({
+      mascota:    limpiar(f.querySelector('.nombreMascota').value),
+      edad_anios: limpiar(f.querySelector('.edadMascota').value) || null,
+    }))
+    .filter(m => m.mascota);
+
+  if (mascotas.length === 0) {
+    aviso.hidden = false;
+    aviso.textContent = 'Escribe al menos el nombre de una mascota.';
+    return;
+  }
+
   boton.disabled = true;
   boton.textContent = 'Enviando…';
+
+  const comun = {
+    tutor:     limpiar(form.tutor.value),
+    telefono:  limpiar(form.telefono.value),
+    direccion: limpiar(form.direccion.value),
+    comuna:    limpiar(form.comuna.value),
+    email:     limpiar(form.email.value) || null,
+    // Las mascotas de una misma persona llegan marcadas con el mismo lote.
+    lote:      `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+  };
 
   try {
     const res = await fetch(`${SUPABASE_URL}/rest/v1/formulario_respuestas`, {
@@ -209,14 +275,7 @@ form.addEventListener('submit', async (e) => {
         'Content-Type': 'application/json',
         'Prefer': 'return=minimal',
       },
-      body: JSON.stringify({
-        tutor:      limpiar(form.tutor.value),
-        mascota:    limpiar(form.mascota.value),
-        direccion:  limpiar(form.direccion.value),
-        comuna:     limpiar(form.comuna.value),
-        edad_anios: limpiar(form.edad.value),
-        email:      limpiar(form.email.value) || null,
-      }),
+      body: JSON.stringify(mascotas.map(m => ({ ...comun, ...m }))),
     });
     if (!res.ok) throw new Error(`El servidor respondió ${res.status}`);
     form.hidden = true;
