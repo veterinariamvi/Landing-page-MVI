@@ -66,7 +66,7 @@ const waUrl = texto =>
    directo: el formulario terminaba en WhatsApp igual, así que eran tres pasos
    para llegar al mismo lugar. */
 const MENSAJES = {
-  agendar:  'Hola ' + CONFIG.marca + ', quiero agendar una visita a domicilio para mi mascota.',
+  agendar:  'Hola ' + CONFIG.marca + ', tengo una consulta sobre una visita a domicilio para mi mascota.',
   consulta: 'Hola ' + CONFIG.marca + ', quiero consultar por un servicio que no aparece en la página.',
 
   /* A propósito no dice la palabra: quien escribe desde ahí no tiene por qué
